@@ -1,7 +1,9 @@
 <html lang="en">
     <head>
-        <title>Player</title>
+        <title>Media Controls Tester</title>
         <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy"
+              content="img-src https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/audio1.jpg">
         <link rel="manifest" href="./manifest.webmanifest">
     </head>
 
@@ -11,10 +13,35 @@
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
         </iframe>
 
-        <audio controls loop>
+        <h3>Audio 1</h3>
+        <audio controls loop id="audio1">
             <source src="mixkit-a-very-happy-christmas-897.mp3" type="audio/mpeg">
         </audio>
     </body>
 
     <script src="./app.js"></script>
+    <script>
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: "A Christmas Song",
+                artist: "Lia",
+                album: "album",
+                artwork: [
+                    {
+                     src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/audio1.jpg",
+                     sizes: "144x144",
+                     type: "image/png",
+                    },
+                ],
+            });
+        }
+    </script>
 </html>
+
+<!-- Sources -->
+
+<!-- 
+    mixkit-a-very-happy-christmas-897.mp3: https://mixkit.co/free-stock-music/
+    
+    audio1.jpg: https://images.pexels.com/photos/717988/pexels-photo-717988.jpeg?cs=srgb&dl=christmas-tree-with-baubles-717988.jpg&fm=jpg
+ -->
