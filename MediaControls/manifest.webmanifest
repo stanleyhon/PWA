@@ -1,7 +1,25 @@
-{
-    "name": "Media Player App",
+[
+  {
+      "name": "Media Player",
+      "display": "standalone",
+      "start_url": "./index.html",
+      "theme_color": "#ac1e44",
+      "background_color": "#7DB6BF",
+      "icons": [
+        {
+          "src": "48x48.png",
+          "sizes": "48x48"
+        },
+        {
+          "src": "144x144.png",
+          "sizes": "144x144"
+        }
+      ]
+  },
+  {
+    "name": "Media Player #2",
     "display": "standalone",
-    "start_url": "./index.html",
+    "start_url": "./player2.html",
     "theme_color": "#ac1e44",
     "background_color": "#7DB6BF",
     "icons": [
@@ -14,4 +32,22 @@
         "sizes": "144x144"
       }
     ]
-}
+  },
+  {
+    "name": "Media Player #3",
+    "display": "standalone",
+    "start_url": "./player3.html",
+    "theme_color": "#ac1e44",
+    "background_color": "#7DB6BF",
+    "icons": [
+      {
+        "src": "48x48.png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "144x144.png",
+        "sizes": "144x144"
+      }
+    ]
+  }
+]

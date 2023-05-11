@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Security-Policy"
               content="img-src self
-                               https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/audio1.jpg 
+                               https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/pink.png 
                                https://liahiscock.github.io/PWA/MediaControls/">
         <link rel="manifest" href="./manifest.webmanifest">
         <link rel="icon" href="pink.png">
@@ -16,10 +16,13 @@
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
         </iframe>
 
-        <h3>Audio 1</h3>
+        <h3>A Christmas Song</h3>
         <audio controls loop id="audio1">
             <source src="mixkit-a-very-happy-christmas-897.mp3" type="audio/mpeg">
         </audio>
+
+        <h3><a href="player2.html">PWA #2</a></h3>
+        <h3><a href="player3.html">PWA #3</a></h3>
     </body>
 
     <script src="./app.js"></script>
@@ -27,11 +30,11 @@
         if ("mediaSession" in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: "A Christmas Song",
-                artist: "Lia",
+                artist: "Main PWA pink",
                 album: "album",
                 artwork: [
                     {
-                     src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/audio1.jpg",
+                     src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/pink.png",
                      sizes: "144x144",
                      type: "image/png",
                     },
