@@ -2,7 +2,7 @@
     "name": "Media Player 3",
     "display": "standalone",
     "start_url": "./player3.html",
-    "theme_color": "#ac1e44",
+    "theme_color": "#E95420",
     "background_color": "#7DB6BF",
     "icons": [
       {

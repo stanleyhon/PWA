@@ -2,7 +2,7 @@
     "name": "Media Player 2",
     "display": "standalone",
     "start_url": "./player2.html",
-    "theme_color": "#ac1e44",
+    "theme_color": "#7DB6BF",
     "background_color": "#7DB6BF",
     "icons": [
       {
