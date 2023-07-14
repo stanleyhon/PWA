@@ -11,9 +11,9 @@
     </head>
 
     <body>
-        <h3 id="songTitle">Another Christmas Song</h3>
+        <h3 id="songTitle"></h3>
         <audio controls id="audio1">
-            <source src="mixkit-hollidays-690.mp3" type="audio/mpeg">
+            <!-- <source src="mixkit-a-very-happy-christmas-897.mp3" type="audio/mpeg"> -->
         </audio>
         <br><br>
 
@@ -32,41 +32,55 @@
     <script>
         var audioMetadata =
         {
-            title: "A Christmas Song",
+            title: "Placeholder",
             artist: "Main PWA pink",
             album: "album",
-            artwork: [
-                {
-                    src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/App1/pink.png",
-                    sizes: "144x144",
-                    type: "image/png",
-                },
-            ],
+            artwork: [],
         };
-
         var audioSources = ['mixkit-a-very-happy-christmas-897.mp3', 'mixkit-hollidays-690.mp3'];
         var audioTitles = ['First Christmas Song', 'Another Christmas Song'];
+        var audioArtworks = [
+            {
+                src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/App1/pink.png",
+                sizes: "144x144",
+                type: "image/png",
+            },
+            {
+                src: "https://raw.githubusercontent.com/LiaHiscock/PWA/main/MediaControls/App1/pink2.png",
+                sizes: "144x144",
+                type: "image/png",
+            }
+        ];
 
         var audio = document.getElementById("audio1");
         audio.volume = 0.1;
 
-        if ("mediaSession" in navigator) {
-            navigator.mediaSession.metadata = new MediaMetadata(audioMetadata);
-        }
+        var counter = 0;
 
-        var index = 0;
-        audio.addEventListener('ended', function onNext() {
-            audio.pause();
-            document.getElementById('songTitle').innerText = audioTitles[index % 2];
-            audio.innerHTML = `<source src=${audioSources[index % 2]} type=\"audio/mpeg\">`;
+        // Initial setup
+        onNext();
+
+        function onNext() {
+            var index = counter % 2;
+            document.getElementById('songTitle').innerText = audioTitles[index];
+            audio.innerHTML = `<source src=${audioSources[index]} type=\"audio/mpeg\">`;
             audio.load();
             audio.play();
-            audioMetadata.title = audioTitles[index % 2];
+            audioMetadata.title = audioTitles[index];
+            audioMetadata.artwork = [audioArtworks[index]];
             if ("mediaSession" in navigator) {
                 navigator.mediaSession.metadata = new MediaMetadata(audioMetadata);
             }
-            index++;
-        });
+            counter++;
+        }
+
+        // Listen for next/previous from SMTC buttons
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.setActionHandler("nexttrack", onNext);
+            navigator.mediaSession.setActionHandler("previoustrack", onNext);
+        }
+
+        
     </script>
 </html>
 
