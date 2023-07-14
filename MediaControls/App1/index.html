@@ -11,15 +11,16 @@
     </head>
 
     <body>
-        <h3 id="songTitle">A Christmas Song</h3>
-        <audio controls loop id="audio1">
+        <h3 id="songTitle">Another Christmas Song</h3>
+        <audio controls id="audio1">
             <source src="mixkit-hollidays-690.mp3" type="audio/mpeg">
         </audio>
         <br><br>
-        <!-- <button id="nextSong" onclick="onNext()">Next song</button> -->
 
         <h3><a href="../App2/index.html">PWA #2</a></h3>
         <h3><a href="../App3/index.html">PWA #3</a></h3>
+
+        <br><br><br>
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/jfKfPfyJRdk"
         title="YouTube video player" frameborder="0"
@@ -54,16 +55,18 @@
         }
 
         var index = 0;
-        function onNext() {
+        audio.addEventListener('ended', function onNext() {
+            audio.pause();
             document.getElementById('songTitle').innerText = audioTitles[index % 2];
             audio.innerHTML = `<source src=${audioSources[index % 2]} type=\"audio/mpeg\">`;
             audio.load();
+            audio.play();
             audioMetadata.title = audioTitles[index % 2];
             if ("mediaSession" in navigator) {
                 navigator.mediaSession.metadata = new MediaMetadata(audioMetadata);
             }
             index++;
-        }
+        });
     </script>
 </html>
 
